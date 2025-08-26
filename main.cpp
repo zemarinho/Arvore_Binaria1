@@ -17,16 +17,15 @@ class Solution {
 public:
     vector<int> inorderTraversal(TreeNode* root) {
         vector<int> temp, auxv;
-        if (root != nullptr){
-            if (root->left != nullptr){
-                auxv = inorderTraversal(root->left);
-                temp.insert(temp.end(), auxv.begin(), auxv.end());
-            }
-            temp.push_back(root->val);
-            if (root->right != nullptr){
-                auxv = inorderTraversal(root->right);
-                temp.insert(temp.end(), auxv.begin(), auxv.end());
-            }
+        if (root == nullptr){return temp;}
+        if (root->left != nullptr){
+            auxv = inorderTraversal(root->left);
+            temp.insert(temp.end(), auxv.begin(), auxv.end());
+        }
+        temp.push_back(root->val);
+        if (root->right != nullptr){
+            auxv = inorderTraversal(root->right);
+            temp.insert(temp.end(), auxv.begin(), auxv.end());
         }
         return temp;
     }
