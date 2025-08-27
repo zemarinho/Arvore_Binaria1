@@ -21,7 +21,17 @@ public:
         if (root ==  nullptr) {return vec;}
         stack<TreeNode*> stc;
         int count = 0;
-
+        while ((root != nullptr || !stc.empty()) && count <100){
+            while (root != nullptr){
+                stc.push(root);
+                root = root->left;
+            }
+            root = stc.top();
+            stc.pop();
+            vec.push_back(root->val);
+            count++;
+            root = root->right;
+        }
         return vec;
     }
 };
